@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Login from "./components/Login/login";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { useAppSelector } from "./hooks/redux-hooks";
+import Home from "./components/Home/home";
+
+const PrivateRoutes = () => {
+  return useAppSelector((state) => state.Auth.api_key) ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" />
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route element={<PrivateRoutes />}>
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/products" element={<Products />} /> */}
+      </Route>
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 
