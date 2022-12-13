@@ -15,11 +15,9 @@ export const login = (
   };
 };
 
-export const logout = (
-  username: string
-): ThunkAction<void, RootState, unknown, AnyAction> => {
+export const logout = (): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     const res = await AuthService.logout();
-    dispatch(AuthActions.login({ username: "", api_key: res }));
+    dispatch(AuthActions.logout());
   };
 };

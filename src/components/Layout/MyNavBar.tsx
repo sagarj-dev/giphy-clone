@@ -11,7 +11,10 @@ const MyNavBar = () => {
   const dispatch = useAppDispatch();
   return (
     <div>
-      <AppBar position="sticky">
+      <AppBar
+        position="fixed"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Box
           p={2}
           display="flex"
@@ -21,7 +24,7 @@ const MyNavBar = () => {
           <Stack gap={2} direction="row" alignItems="center">
             <IconButton
               color="inherit"
-              sx={{ display: { xs: "block", sm: "none" } }}
+              sx={{ display: { xs: "block", md: "none" } }}
               onClick={() => dispatch(toggleDrawer())}
             >
               <Menu />

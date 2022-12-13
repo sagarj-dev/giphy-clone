@@ -1,22 +1,27 @@
 import * as React from "react";
-import { Box, Stack } from "@mui/material";
+import Box from "@mui/material/Box";
+
+import CssBaseline from "@mui/material/CssBaseline";
+import Toolbar from "@mui/material/Toolbar";
+
+import Typography from "@mui/material/Typography";
+
 import MyNavBar from "./MyNavBar";
 import MyNavDrawer from "./MyNavDrawer";
 
-const drawerWidth = 240;
 type LayoutType = {
   children: React.ReactElement;
 };
 export default function ClippedDrawer({ children }: LayoutType) {
   return (
-    <Box>
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
       <MyNavBar />
-      <Stack direction="row" component="main">
-        <Box>
-          <MyNavDrawer />
-        </Box>
-        <Box>{children}</Box>
-      </Stack>
+      <MyNavDrawer />
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Toolbar />
+        {children}
+      </Box>
     </Box>
   );
 }

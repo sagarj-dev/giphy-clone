@@ -7,6 +7,7 @@ import "@fontsource/roboto/700.css";
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { useAppSelector } from "./hooks/redux-hooks";
 import Home from "./components/Home/home";
+import Category from "./components/Category/Category";
 
 const PrivateRoutes = () => {
   return useAppSelector((state) => state.Auth.api_key) ? (
@@ -21,6 +22,7 @@ function App() {
     <Routes>
       <Route element={<PrivateRoutes />}>
         <Route path="/" element={<Home />} />
+        <Route path="/category/:cat" element={<Category />} />
         {/* <Route path="/products" element={<Products />} /> */}
       </Route>
       <Route path="/login" element={<Login />} />

@@ -4,19 +4,22 @@ import Spinner from "../Common/Spinner";
 import Layout from "../Layout/Layout";
 import { Box } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { loadData } from "../../store/data-slice/data-actions";
-export default function Home() {
+import { SearchLoadData } from "../../store/data-slice/data-actions";
+import { useParams } from "react-router-dom";
+export default function Category() {
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.data.data);
-  console.log("rend data", data);
+
+  const { cat } = useParams();
 
   React.useEffect(() => {
-    dispatch(loadData({ category: "trending", offset: 0 }));
-  }, []);
+    if (cat) {
+      dispatch(SearchLoadData({ q: cat, offset: 0 }));
+    }
+  }, [cat]);
 
   return (
     <Layout>
-      {/* <h1>Home</h1> */}
       <Box
         display="grid"
         gap={2}

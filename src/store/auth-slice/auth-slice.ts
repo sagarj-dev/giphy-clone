@@ -14,7 +14,8 @@ const AuthSlice = createSlice({
       state.api_key = action.payload.api_key;
     },
     logout(state) {
-      state = { ...state, username: "", api_key: "" };
+      state.username = "";
+      state.api_key = "";
     },
   },
 });

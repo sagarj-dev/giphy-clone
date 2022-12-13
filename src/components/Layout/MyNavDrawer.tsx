@@ -4,196 +4,45 @@ import {
   ListItemIcon,
   ListItemText,
   List,
-  Divider,
   Drawer,
   Box,
-  Toolbar,
 } from "@mui/material/";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { toggleDrawer } from "../../store/setting-slice/setting-actions";
+import { Link } from "react-router-dom";
 const drawerWidth = 240;
 const DrawerContent = () => {
+  const allLinks: string[] = [
+    "Tranding",
+    "Artists",
+    "Reactions",
+    "Entertainment",
+    "Sport",
+    "Stickers",
+    "Animal",
+    "Anime",
+    "Meme",
+    "Gaming",
+    "Bollywood",
+  ];
   return (
     <>
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <LocalFireDepartmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Tranding" />
-          </ListItemButton>
-        </ListItem>
+      <List sx={{ marginTop: 10 }}>
+        {allLinks.map((path) => (
+          <ListItem key={path}>
+            <ListItemButton
+              component={Link}
+              to={`/category/${path.toLowerCase()}`}
+            >
+              <ListItemIcon>
+                <LocalFireDepartmentIcon />
+              </ListItemIcon>
+              <ListItemText primary={path} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </>
   );
@@ -214,7 +63,7 @@ const MyNavDrawer = () => {
         }}
         onClose={() => dispatch(toggleDrawer())}
         sx={{
-          display: { xs: "block", sm: "none" },
+          display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
         }}
       >
@@ -222,14 +71,24 @@ const MyNavDrawer = () => {
       </Drawer>
       <Box
         sx={{
-          display: { xs: "none", sm: "block" },
+          display: { xs: "none", md: "block" },
           height: "100%",
           backgroundColor: "red",
         }}
       >
-        <Toolbar>
+        <Drawer
+          variant="permanent"
+          sx={{
+            width: drawerWidth,
+
+            [`& .MuiDrawer-paper`]: {
+              width: drawerWidth,
+              boxSizing: "border-box",
+            },
+          }}
+        >
           <DrawerContent />
-        </Toolbar>
+        </Drawer>
       </Box>
     </div>
   );
