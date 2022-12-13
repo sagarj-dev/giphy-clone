@@ -16,3 +16,8 @@ export interface authModel {
   username: string;
   api_key: string;
 }
+
+export interface settingModel {
+  drawer: boolean;
+  theme: string;
+}
