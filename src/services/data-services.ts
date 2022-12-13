@@ -6,7 +6,7 @@ const DataService = {
     var res = await Api().get("trending", {
       params: {
         api_key: constants.api_key,
-        limit: 1,
+        limit: 12,
         offset: filters.offset,
         rating: filters.rating || "",
       },
