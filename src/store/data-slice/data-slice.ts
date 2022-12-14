@@ -4,9 +4,10 @@ import { DataModel } from "../../models/redux-models";
 let initialState: DataModel = {
   data: [],
   filters: {
-    category: "tranding",
+    category: "trending",
     offset: 0,
     rating: "",
+    q: "",
   },
 };
 const DataSlice = createSlice({

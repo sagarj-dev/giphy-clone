@@ -1,6 +1,6 @@
 import React from "react";
 import GifCard from "../Common/GifCard";
-import Spinner from "../Common/Spinner";
+
 import Layout from "../Layout/Layout";
 import { Box } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
@@ -8,11 +8,10 @@ import { loadData } from "../../store/data-slice/data-actions";
 export default function Home() {
   const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.data.data);
-  console.log("rend data", data);
 
   React.useEffect(() => {
     dispatch(loadData({ category: "trending", offset: 0 }));
-  }, []);
+  }, [dispatch]);
 
   return (
     <Layout>

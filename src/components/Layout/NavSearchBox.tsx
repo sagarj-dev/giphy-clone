@@ -4,8 +4,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useAppDispatch } from "../../hooks/redux-hooks";
 import { logout } from "../../store/auth-slice/auth-actions";
 import { SearchLoadData } from "../../store/data-slice/data-actions";
+import Brightness6Icon from "@mui/icons-material/Brightness6";
+import { toggleTheme } from "../../store/setting-slice/setting-actions";
 const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
+  backgroundColor: theme.palette.background.default,
   padding: "0 10px",
   borderRadius: theme.shape.borderRadius,
   display: "flex",
@@ -29,17 +31,21 @@ const NavSearchBox = () => {
   return (
     <Stack
       direction="row"
-      gap={2}
+      gap={{ xs: 0, sm: 2 }}
       sx={{ maxWidth: { xs: "200px", sm: "40%" } }}
     >
       <Search>
         <InputBase
           placeholder="Search....."
+          color={"primary"}
           onChange={handleChange}
           onKeyUp={handleSearch}
           value={searchString}
         />
       </Search>
+      <IconButton color="inherit" onClick={() => dispatch(toggleTheme())}>
+        <Brightness6Icon />
+      </IconButton>
       <Tooltip
         title="Logout"
         onClick={() => {

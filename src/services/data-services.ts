@@ -1,5 +1,5 @@
 import Api from "./Api";
-import { ApiDataModel, FilterModel } from "../models/redux-models";
+import { FilterModel } from "../models/redux-models";
 import constants from "../constant";
 const DataService = {
   async loadData(filters: FilterModel) {
@@ -15,8 +15,6 @@ const DataService = {
     return res.data.data;
   },
   async SearchLoadData(filters: FilterModel) {
-    console.log(filters.q);
-
     var res = await Api().get("search", {
       params: {
         api_key: constants.api_key,

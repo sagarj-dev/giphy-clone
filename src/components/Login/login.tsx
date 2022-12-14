@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -18,7 +18,6 @@ export default function Login() {
 
   const dispatch = useAppDispatch();
   let authstate = useAppSelector((state) => state.Auth);
-  console.log("rend", authstate);
 
   const handleChage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -35,7 +34,16 @@ export default function Login() {
       {authstate.api_key ? (
         <Navigate to="/" />
       ) : (
-        <div className="login">
+        <Box
+          bgcolor={"background.default"}
+          color={"text.primary"}
+          sx={{
+            height: "100vh",
+            width: "100vw",
+            display: "grid",
+            placeItems: "center",
+          }}
+        >
           <div className="login-container">
             <TextField
               id="outlined-basic"
@@ -56,7 +64,7 @@ export default function Login() {
               Login
             </Button>
           </div>
-        </div>
+        </Box>
       )}
     </>
   );

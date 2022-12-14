@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { settingModel } from "../../models/redux-models";
 
 let initialState: settingModel = {
@@ -12,9 +12,13 @@ const SettingSlice = createSlice({
     toggleDrawer(state) {
       state.drawer = !state.drawer;
     },
-    // logout(state) {
-    //   state = { username: "", api_key: "" };
-    // },
+    toggleTheme(state) {
+      if (state.theme === "light") {
+        state.theme = "dark";
+      } else {
+        state.theme = "light";
+      }
+    },
   },
 });
 

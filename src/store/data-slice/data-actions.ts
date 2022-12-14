@@ -18,8 +18,6 @@ export const loadData = (
 export const SearchLoadData = (
   filters: FilterModel
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
-  console.log(filters);
-
   return async (dispatch, getState) => {
     const res = await DataService.SearchLoadData(filters);
     dispatch(DataActions.loadData({ data: res, filters }));

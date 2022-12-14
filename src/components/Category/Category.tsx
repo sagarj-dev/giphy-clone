@@ -1,6 +1,5 @@
 import React from "react";
 import GifCard from "../Common/GifCard";
-import Spinner from "../Common/Spinner";
 import Layout from "../Layout/Layout";
 import { Box } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
@@ -16,7 +15,7 @@ export default function Category() {
     if (cat) {
       dispatch(SearchLoadData({ q: cat, offset: 0 }));
     }
-  }, [cat]);
+  }, [cat, dispatch]);
 
   return (
     <Layout>

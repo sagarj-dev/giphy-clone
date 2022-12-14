@@ -14,6 +14,7 @@ import { toggleDrawer } from "../../store/setting-slice/setting-actions";
 import { Link } from "react-router-dom";
 const drawerWidth = 240;
 const DrawerContent = () => {
+  const dispatch = useAppDispatch();
   const allLinks: string[] = [
     "Tranding",
     "Artists",
@@ -31,7 +32,7 @@ const DrawerContent = () => {
     <>
       <List sx={{ marginTop: 10 }}>
         {allLinks.map((path) => (
-          <ListItem key={path}>
+          <ListItem key={path} onClick={() => dispatch(toggleDrawer())}>
             <ListItemButton
               component={Link}
               to={`/category/${path.toLowerCase()}`}
